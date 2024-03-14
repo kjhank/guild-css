@@ -1,0 +1,49 @@
+.card {
+  border-radius: 0.5em;
+  background-color: var(--c-alt-dim);
+  padding: 1em;
+  border: max(2px, 0.1vw) solid var(--c-bg);
+  transition: scale 200ms, filter 200ms;
+
+  @media (prefers-color-scheme: light) {
+    background-color: var(--c-alt-2);
+    color: var(--c-alt-dim);
+  }
+
+  img,
+  video {
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+    border-radius: 0.5em;
+  }
+
+  &:has(img) {
+    border-color: var(--c-base);
+  }
+
+  &:has(video) {
+    border-color: var(--c-alt);
+  }
+
+  &:has(p) {
+    border-color: var(--c-alt-2);
+
+    @media (prefers-color-scheme: light) {
+      border-color: var(--c-alt-2-dim);
+    }
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+  gap: 1em;
+  list-style-type: none;
+  padding: 0;
+
+  &:has(.card:hover) > .card:not(:hover) {
+    scale: 0.95;
+    filter: saturate(0.5);
+  }
+}

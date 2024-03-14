@@ -1,0 +1,57 @@
+.form {
+  padding-block: 2em;
+  transition: rotate 400ms;
+
+  .field-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    & + .field-wrapper {
+      margin-block-start: 1em;
+    }
+
+    &:has(input:user-invalid) {
+      .field-error {
+        display: block;
+      }
+    }
+
+    &:has(input:user-valid) {
+      .field-success {
+        display: block;
+      }
+    }
+  }
+
+  .field-error,
+  .field-success {
+    display: none;
+  }
+
+  .field-error {
+    color: var(--c-error);
+  }
+
+  .field-success {
+    color: var(--c-success);
+  }
+
+  &:has(input:user-invalid) {
+    rotate: z 10deg;
+  }
+
+  input {
+    border-radius: 0.25em;
+    border: max(2px, 0.1vw) solid var(--c-bg);
+
+    &:is(:user-invalid) {
+      border-color: var(--c-error);
+    }
+
+    &:is(:user-valid) {
+      border-color: var(--c-success);
+    }
+
+  }
+}

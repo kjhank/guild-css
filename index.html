@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/main.css">
+  <title>New & lesser-known CSS features</title>
+</head>
+
+<body>
+  <header class="full-width main-header">
+    <nav class="main-nav">
+      <a href="./index.html">Home</a>
+      <a href="./expanded-grid.html">Grid examples</a>
+    </nav>
+    <h1>New & lesser-known CSS features</h1>
+  </header>
+  <main class="grid">
+    <section class="full-width grid">
+      <h2 id="footnote-target-1">Multiple <code>:has</code> use cases<sup><a href="#footnote-1">1</a></sup></h2>
+      <h3>Styling the parent based on child's content</h3>
+      <ul class="cards-grid">
+        <li class="card">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, pariatur exercitationem est
+            provident repellat rem, blanditiis eius, fugit fugiat error cupiditate. Voluptates quae atque cumque?
+            Necessitatibus eius officia ratione deleniti?
+          </p>
+        </li>
+        <li class="card">
+          <img
+            src="https://images.unsplash.com/photo-1707343843437-caacff5cfa74?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="cloudy desert rocks">
+        </li>
+        <li class="card">
+          <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"></video>
+        </li>
+        <li class="card">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae, doloribus facere nisi corporis dicta
+          blanditiis deleniti suscipit. Est obcaecati ratione illum maxime facilis! Veniam harum omnis repellendus
+          accusamus rem!
+        </li>
+      </ul>
+      <hr />
+      <h3 id="footnote-target-2">Usage with the new <code>:user-valid</code> &amp;&nbsp;<code>:user-invalid</code>
+        pseudo-classes<sup><a href="#footnote-2">2</a></sup></h3>
+      <form class="form" action="#" name="demo">
+        <div class="field-wrapper">
+          <label for="field-name">Name: </label>
+          <input id="field-name" required type="text">
+          <span class="field-error">Error!</span>
+          <span class="field-success">Ok!</span>
+        </div>
+        <div class="field-wrapper">
+          <label for="field-email">E-mail: </label>
+          <input id="field-email" type="email">
+          <span class="field-error">Error!</span>
+          <span class="field-success">Ok!</span>
+        </div>
+      </form>
+      <hr />
+      <h3>The previous sibling selector</h3>
+      <p class="sibling-demo">
+        I have a border, because I have a sibling paragraph.
+      </p>
+      <p class="sibling-demo">
+        Voluptatem perferendis laborum ipsam itaque distinctio sapiente iure harum, consequuntur enim ipsa adipisci sint
+        magnam necessitatibus voluptas repellendus consectetur debitis nam incidunt tenetur sit quod rem quaerat
+        facilis! Aliquam, tenetur?
+      </p>
+    </section>
+    <section>
+      <h2 id="footnote-target-3"><code>of</code> notation in nth pseudo-classes<sup><a href="#footnote-3">3</a></sup>
+      </h2>
+      <ul class="nth-of-demo">
+        <li>
+          Lorem ipsum dolor sit.
+        </li>
+        <li>
+          Accusamus illum sint ullam.
+        </li>
+        <li class="highlight">
+          Aut cumque officia itaque.
+        </li>
+        <li>
+          Sunt porro nesciunt quis?
+        </li>
+        <li class="highlight">
+          Aperiam pariatur quidem perferendis.
+        </li>
+        <li>
+          Explicabo consectetur nulla eveniet.
+        </li>
+        <li>
+          Similique magni facilis vitae?
+        </li>
+        <li class="highlight">
+          Officia possimus repudiandae aspernatur?
+        </li>
+      </ul>
+    </section>
+    <section class="where-demo">
+      <h2 id="footnote-target-4">The <code>:where</code> and <code>:is</code> selectors<sup><a href="#footnote-4">4</a></sup></h2>
+      <p>All the <strong>strong</strong>s, <em>em</em>s, <i>i</i>s and <b>b</b>s are selected in this paragraph with
+        more forgiving and (arguably) simpler selector than
+        <code>p &gt; strong, p &gt; em, p &gt; i, p &gt; b {...}</code>
+      </p>
+    </section>
+    <section>
+      <h2 id="footnote-target-5">The <code>@scope</code> at-rule<sup><a href="#footnote-5">5</a></sup></h2>
+      <div class="scope-start">
+        <p>
+          The style of this paragraph is limited to the <code>.scope-start</code> selector's children
+        </p>
+      </div>
+      <scoped-paragraph>
+        <style>
+          @scope {
+            * {
+              color: var(--c-alt-bright);
+              font-style: italic;
+
+              @media (prefers-color-scheme: light) {
+                color: var(--c-alt-dim);
+              }
+            }
+          }
+        </style>
+        <p>
+          Even using the wildcard selector won't leak my styles.
+        </p>
+      </scoped-paragraph>
+    </section>
+    <section>
+      <h2 id="footnote-target-6">Highlighting link targets<sup><a href="#footnote-6">6</a></sup></h2>
+      <a href="#footnote-target-6">Click me!</a>
+    </section>
+    <section class="container-queries">
+      <h2 id="footnote-target-7">Container queries<sup><a href="#footnote-7">7</a></sup></h2>
+      <p class="container-queries-target">
+        I'll change color when my parent is narrower than 920px.
+      </p>
+      <p>
+        I won't!
+      </p>
+    </section>
+    <section>
+      <h2 id="footnote-target-8">Using <code>clamp()</code> for fluid type scales<sup><a href="#footnote-8">8</a></sup></h2>
+      <p class="fluid-size">
+        I am a small text. I'll never be larger than 24px. But I'll also never fall below 12px.
+      </p>
+    </section>
+    <section>
+      <h2 id="footnote-target-9">Aspect ratios<sup><a href="#footnote-9">9</a></sup></h2>
+      <ul class="aspect-ratios">
+        <li>16:9</li>
+        <li>Your grandpa's CRT TV: 4:3</li>
+        <li>IMAX: 1.43:1</li>
+        <li>Ultrawide monitor: 21:9</li>
+        <li>Square: 1</li>
+      </ul>
+    </section>
+    <footer class="footnotes">
+      <h2>Footnotes</h2>
+      <ul>
+        <li id="footnote-1">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"><code>:has()</code> on MDN</a>, <a href="https://www.youtube.com/watch?v=k2_QGzJkQXM">CSS :has - Use JS Less and CSS More - 10 Real World Use Cases</a> <a
+            class="return-link" href="#footnote-target-1">return</a>
+        </li>
+        <li id="footnote-2">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-valid"><code>:user-valid</code></a> and <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid"><code>:user-invalid</code>on MDN</a>
+          <a class="return-link" href="#footnote-target-2">return</a>
+        </li>
+        <li id="footnote-3">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child#the_of_selector_syntax"><code>nth-child(of ...)</code>
+            on MDN</a> <a class="return-link" href="#footnote-target-3">return</a>
+        </li>
+        <li id="footnote-4">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where">The <code>:where()</code></a> and <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is()</code> pseudo-classes on MDN</a> <a
+            class="return-link" href="#footnote-target-4">return</a>
+        </li>
+        <li id="footnote-5">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@scope"><code>@scope</code> at-rule</a> on
+          MDN <a class="return-link" href="#footnote-target-5">return</a>
+        </li>
+        <li id="footnote-6">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">The <code>:target</code> pseudo-class on
+            MDN</a> <a class="return-link" href="#footnote-target-6">return</a>
+        </li>
+        <li id="footnote-7">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries">Container queries
+            on MDN</a>, <a
+            href="https://moderncss.dev/modern-css-for-dynamic-component-based-architecture/">Modern CSS For Dynamic Component-Based Architecture on moderncss.dev</a> <a class="return-link" href="#footnote-target-7">return</a>
+        </li>
+        <li id="footnote-8">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"><code>clamp()</code> on MDN</a>, <a
+            href="https://moderncss.dev/practical-uses-of-css-math-functions-calc-clamp-min-max/">Practical Uses of CSS
+            Math Functions: calc, clamp, min, max on moderncss.dev</a>
+          <a href="#footnote-target-8" class="return-link">return</a>
+        </li>
+        <li id="footnote-9">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio"><code>aspect-ratio</code> on MDN</a>
+          <a href="#footnote-target-9" class="return-link">return</a>
+        </li>
+        <li id="footnote-10">
+          <a href="https://developer.chrome.com/blog/css-relative-color-syntax/">CSS relative color syntax</a>
+        </li>
+      </ul>
+    </footer>
+  </main>
+</body>
+
+</html>

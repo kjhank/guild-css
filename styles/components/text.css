@@ -1,0 +1,9 @@
+main p {
+  + p {
+    margin-block-start: 1em;
+  }
+
+  &.fluid-size {
+    font-size: clamp(12px, 1rem + 0.4vw, 24px);
+  }
+}

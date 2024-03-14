@@ -1,0 +1,36 @@
+.grid {
+  --gap: clamp(1rem, 6vw, 3rem);
+  --full-width: minmax(var(--gap), 1fr);
+  --hero: minmax(0, 5rem);
+  --content: min(50ch, 100% - var(--gap) * 2);
+  --popout: minmax(0, 2rem);
+
+  display: grid;
+  grid-template-columns: [full-start] var(--full-width) [content-start] var(--content) [content-end] var(--full-width) [full-end];
+
+  &.grid-expanded {
+    grid-template-columns:
+    [full-start] var(--full-width) [hero-start] var(--hero) [popout-start] var(--popout) [content-start] var(--content) [content-end] var(--popout) [popout-end] var(--hero) [hero-end] var(--full-width) [full-end];
+  }
+
+  > :not(.breakout, .hero, .full-width) {
+    grid-column: content;
+  }
+
+  > .breakout {
+    grid-column: popout;
+  }
+
+  > .hero {
+    grid-column: hero;
+  }
+
+  > .full-width {
+    grid-column: full;
+  }
+
+  > .inherit-grid {
+    display: grid;
+    grid-template-columns: inherit;
+  }
+}

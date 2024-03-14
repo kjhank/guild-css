@@ -1,0 +1,9 @@
+code,
+pre {
+  background-color: hsl(from var(--c-text) h s calc(l * 0.1));
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+  text-shadow: hsl(from var(--c-text) h s calc(l * 0.75)) 0 0 8px;
+  font-weight: lighter;
+  color: #fff;
+}

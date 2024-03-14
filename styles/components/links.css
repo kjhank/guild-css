@@ -1,0 +1,27 @@
+a {
+  &:hover {
+    text-decoration-color: var(--c-highlight-2);
+  }
+}
+
+.footnotes {
+  .return-link {
+    display: none;
+  }
+
+  :target {
+    background-color: unset;
+    border: unset;
+    padding: 0;
+
+    a:not(.return-link) {
+      border-radius: 0.125em;
+      outline: 2px dashed var(--c-highlight);
+      outline-offset: 0.125em;
+    }
+
+    .return-link {
+      display: inline;
+    }
+  }
+}

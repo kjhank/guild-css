@@ -1,0 +1,64 @@
+:root {
+  --hue-base: 320;
+  --hue-triadic-1: calc(var(--hue-base) - 120);
+  --hue-triadic-2: calc(var(--hue-base) - 240);
+
+  --saturation-base: 50%;
+  --saturation-high: calc(var(--saturation-base) * 4/3);
+  --saturation-low: calc(var(--saturation-base) * 2/3);
+
+  --lightness-base: 50%;
+  --lightness-bright: calc(var(--lightness-base) * 4/3);
+  --lightness-dim: calc(var(--lightness-base) / 2);
+  --lightness-dark: calc(var(--lightness-base) / 4);
+
+  --c-base: hsl(var(--hue-base) var(--saturation-base) var(--lightness-base));
+  --c-alt: hsl(var(--hue-triadic-1) var(--saturation-base) var(--lightness-base));
+  --c-alt-2: hsl(var(--hue-triadic-2) var(--saturation-base) var(--lightness-base));
+
+  --c-bright: hsl(from var(--c-base) h s calc(l * 4/3));
+  --c-dim: hsl(from var(--c-base) h s calc(l / 2));
+  --c-dark: hsl(from var(--c-base) h s calc(l / 4));
+
+  --c-alt-bright: hsl(from var(--c-alt) h s calc(l * 4/3));
+  --c-alt-dim: hsl(from var(--c-alt) h s calc(l / 2));
+  --c-alt-dark: hsl(from var(--c-alt) h s calc(l / 4));
+
+  --c-alt-2-bright: hsl(from var(--c-alt-2) h s calc(l * 4/3));
+  --c-alt-2-dim: hsl(from var(--c-alt-2) h s calc(l / 2));
+  --c-alt-2-dark: hsl(from var(--c-alt-2) h s calc(l / 4));
+
+  --c-example: color-mix(in srgb, red, blue);
+
+  --c-text: var(--c-bright);
+  --c-bg: var(--c-alt-dark);
+
+  --c-highlight: var(--c-alt-bright);
+  --c-highlight-2: var(--c-alt-2-bright);
+
+  --c-error: hsl(from var(--c-bright) 0 var(--saturation-high) l);
+  --c-success: hsl(from var(--c-bright) 120 var(--saturation-high) l);
+
+  --c-thematic-border: var(--c-alt-2);
+
+  --f-body: 'Atkinson Hyperlegible', sans-serif;
+
+  --f-w-body: 400;
+  --f-w-heading: 700;
+
+  --f-s-body: 2rem;
+  --f-s-heading-1: 4rem;
+
+  --lh-heading: 1.2;
+  --lh-body: 1.5;
+
+  @media (prefers-color-scheme: light) {
+    --c-text: var(--c-dim);
+    --c-bg: var(--c-alt-bright);
+
+    --c-highlight: var(--c-alt-dark);
+    --c-highlight-2: var(--c-alt-2-dark);
+
+    --c-thematic-border: var(--c-alt-2-dark);
+  }
+}
